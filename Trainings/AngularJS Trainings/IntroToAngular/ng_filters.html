@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+
+<head>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="filters.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body ng-controller="filterController">
+    <table>
+       Rows to display: <input type="number" step="1" min="0" max="4" ng-model="rowLimit">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>DateOfBirth</th>
+                <th>Gender</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employees | limitTo:rowLimit">
+                <td>{{employee.name | uppercase}}</td>
+                <td>{{employee.dateOfBirth | date:"mm/dd/yyyy"}}</td>
+                <td>{{employee.gender | lowercase}}</td>
+                <td>{{employee.salary | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
