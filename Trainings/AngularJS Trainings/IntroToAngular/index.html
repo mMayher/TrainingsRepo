@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+
+<body ng-app="appModule">
+    <div ng-controller="firstController">
+        {{names}}
+    </div>
+    <br>
+    <div ng-controller="empController">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" ng-model="employee.name">
+                </td>
+            </tr>
+            <tr>
+                <td>Surname</td>
+                <td>
+                    <input type="text" ng-model="employee.surname">
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="text" ng-model="employee.gender">
+                </td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>
+                    <input type="text" ng-model="employee.phone">
+                </td>
+            </tr>
+        </table>
+
+        <br>
+        <br>
+
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>{{employee.name}} </td>
+            </tr>
+            <tr>
+                <td>Surname</td>
+                <td>{{employee.surname}}</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{employee.gender}}</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>{{employee.phone}}</td>
+            </tr>
+        </table>
+    </div>
+    <div ng-controller="countryController">
+        <ul>
+            <li ng-repeat="country in countries">
+                {{country.name}}
+                <ul>
+                    <li ng-repeat="city in country.cities">
+                        {{city.name}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div ng-controller="techController">
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Likes</th>
+                    <th>Dsilikes</th>
+                    <th>Like/Dislike</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tech in technologies">
+                    <td>{{tech.name}}</td>
+                    <td>{{tech.likes}}</td>
+                    <td>{{tech.dislikes}}</td>
+                    <td>
+                        <input type="button" value="Like" ng-click="incrementLikes(tech)">
+                        <input type="button" value="Dislike" ng-click="incrementDislikes(tech)">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
