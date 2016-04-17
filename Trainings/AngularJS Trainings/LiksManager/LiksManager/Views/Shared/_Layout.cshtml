@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("Styles", false)
+    @RenderSection("HeadScripts", false)
+    <script src="~/Scripts/pages/links/angular.js"></script>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    @RenderSection("FootScripts", false)
+</body>
+</html>

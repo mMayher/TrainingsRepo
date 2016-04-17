@@ -25,5 +25,6 @@
         ];
         $scope.employees = employees;
         $scope.rowLimit = 2;
+        $scope.sortOption = "name";
     })
 })(angular);

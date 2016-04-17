@@ -9,7 +9,20 @@
 
 <body ng-controller="filterController">
     <table>
-       Rows to display: <input type="number" step="1" min="0" max="4" ng-model="rowLimit">
+       <div>
+           Sort by:
+           <select name="selectSorting" id="sort" ng-model="sortOption">
+               <option value="name">Name</option>
+               <option value="date">Date of birth</option>
+               <option value="gender">Gender</option>
+               <option value="salary">Salary</option>
+           </select>
+           
+       </div>
+        <div>
+            Rows to display:
+            <input type="number" step="1" min="0" max="4" ng-model="rowLimit">
+        </div>
         <thead>
             <tr>
                 <th>Name</th>
@@ -19,9 +32,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="employee in employees | limitTo:rowLimit">
+            <tr ng-repeat="employee in employees | limitTo:rowLimit | orderBy:sortOption">
                 <td>{{employee.name | uppercase}}</td>
-                <td>{{employee.dateOfBirth | date:"mm/dd/yyyy"}}</td>
+                <td>{{employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
                 <td>{{employee.gender | lowercase}}</td>
                 <td>{{employee.salary | currency}}</td>
             </tr>
