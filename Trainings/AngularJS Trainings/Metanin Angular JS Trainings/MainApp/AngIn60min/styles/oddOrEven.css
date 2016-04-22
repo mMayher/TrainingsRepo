@@ -1,0 +1,11 @@
+﻿.odd {
+    background-color: aqua;
+    font-family: Algerian;
+    font-style: oblique;
+}
+
+.even {
+    background-color: brown;
+    font-family: 'Baskerville Old Face';
+    font-style: italic;
+}

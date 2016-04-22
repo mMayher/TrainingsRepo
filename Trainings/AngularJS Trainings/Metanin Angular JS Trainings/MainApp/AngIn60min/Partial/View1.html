@@ -1,0 +1,18 @@
+﻿<link rel="stylesheet" href="styles/oddOrEven.css" />
+<div class="container">
+    <h2>View1</h2>
+    <input type="text" ng-model="nameText" />
+    <br />
+    <ul>
+        <li ng-repeat="customer in customers | filter : nameText | orderBy : 'name'" ng-class="$odd ? 'odd' : 'even'">
+            {{customer.name + ' ' + customer.city}}
+        </li>
+    </ul>
+    <br />
+    <input type="text" ng-model="newCust.name" />
+    <br />
+    <input type="text" ng-model="newCust.city" />
+    <br />
+    <input type="button" value="Add Customer" ng-click="addCustomer()"/>
+</div>
+<a href="#/view2">View2</a>

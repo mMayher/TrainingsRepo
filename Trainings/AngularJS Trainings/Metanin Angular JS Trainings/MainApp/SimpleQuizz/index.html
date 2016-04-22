@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html ng-app="questApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/app/questModule.js"></script>
+    <script src="Scripts/app/questCtrl.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="page-header">
+        <h1 class="h1 text-center">Simple Quiz</h1>
+    </header>
+    <content class="text-center panel-body" ng-controller="questCtrl">
+        <table class="table">
+            <tr>
+                <td ng-repeat="quizz in quizzes">
+                    <input type="radio" class="radio-inline" ng-model="currentQuestion" value="{{$index}}" name="quizz" ng-click="setCurrent($index);" /><span>{{$index + 1}} Question</span>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <h2 class="h2">{{quizzes[currentQuestion].question}}</h2>
+        <table class="table">
+            <tr ng-repeat="variant in quizzes[currentQuestion].variants">
+                <td class="text-right" style="width:50%"><input type="radio" class="radio-inline" value="{{variant}}" name="variants" ng-click="setUserChoice($index, variant);" /></td>
+                <td class="text-left" style="width:50%">{{variant}}</td>
+            </tr>
+        </table>
+        <footer class="text-center panel-footer">
+            <table class="table-responsive" style="position:absolute;left:40%">
+                <tr>
+                    <td><input type="button" value="Previous" ng-click="decrementCurrent();" class="btn-toolbar" style="width:100px"/></td>
+                    <td style="width:30px"></td>
+                    <td><input type="button" value="Submit Quizz" ng-click="showResult();" class="btn-primary" /></td>
+                    <td style="width:30px"></td>
+                    <td><input type="button" value="Next" ng-click="incrementCurrent();" class="btn-toolbar" style="width:100px" /></td>
+                </tr>
+            </table>
+            
+        </footer>
+    </content>
+</body>
+</html>
