@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="store">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <script type="text/javascript" src="js/libs/angular.min.js"></script>
+    <script type="text/javascript" src="js/app/app.js"></script>
+    <script type="text/javascript" src="js/app/products.js"></script>
+</head>
+
+<body ng-controller="StoreController as store">
+    <header>
+        <h1 class="text-center">Flatlander Crafted Gems</h1>
+        <h2 class="text-center">– an Angular store –</h2>
+    </header>
+
+    <section class="list-group products">
+        <section class="filter">
+            <div class="form-group">
+                <input type="text" id="search" class="form-control" placeholder="Search by name" ng-model="store.name">
+            </div>
+            <div class="form-group">
+                Order By
+                <input type="button" class="btn btn-default" value="Name">
+                <input type="button" class="btn btn-default" ng-click="store.order('price')" value="Price {{store.showOrderArrow('price')}}">
+                <input type="button" class="btn btn-default" value="Shine">
+                <input type="button" class="btn btn-default" value="Reviews">
+                <div class="form-group checkbox">
+                    <label>
+                        <input type="checkbox" id="soldOut">In stock</label>
+                    <select>
+                        <option value="">Choose faces count</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <div class="list-group-item" ng-repeat="product in store.products | filter: {name: store.name} | orderBy: store.predicate: store.reverse">
+            <product-title> </product-title>
+
+            <product-gallery></product-gallery>
+
+            <product-panels></product-panels>
+        </div>
+
+    </section>
+</body>
+
+</html>
